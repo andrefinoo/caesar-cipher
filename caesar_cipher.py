@@ -2,15 +2,16 @@ def encrypt(text: str, key: int) -> str:
     result = ""
 
     for char in text:
-        if char.isalpha():
-            if char.islower():
-                base = 97
-            else:
-                base = 65
-
-            pos = ord(char) - base
+        if "a" <= char <= "z":
+            pos = ord(char) - 97
             new_pos = (pos + key) % 26
-            result += chr(new_pos + base)
+            result += chr(new_pos + 97)
+
+        elif "A" <= char <= "Z":
+            pos = ord(char) - 65
+            new_pos = (pos + key) % 26
+            result += chr(new_pos + 65)
+
         else:
             result += char
 
