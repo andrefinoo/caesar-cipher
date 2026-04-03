@@ -17,19 +17,22 @@ def encrypt(text: str, key: int) -> str:
 
     return result
 
-
 def main():
-    action = input("Vuoi cifrare o decifrare? ").strip().lower()
+    while True:
+
+        action = input("Vuoi cifrare o decifrare? ").strip().lower()
+        if action == "cifrare" or action == "decifrare":
+            break
+        else:
+            print("Scelta non valida")
+
     text = input("Inserisci il testo: ")
     key = int(input("Inserisci la chiave: "))
 
     if action == "cifrare":
         result = encrypt(text, key)
-    elif action == "decifrare":
-        result = encrypt(text, -key)
     else:
-        print("Scelta non valida")
-        return
+        result = encrypt(text, -key)
 
     print("Risultato:", result)
 
